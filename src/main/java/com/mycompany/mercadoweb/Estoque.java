@@ -5,7 +5,7 @@
 package com.mycompany.mercadoweb;
 
 import connection.Conexao;
-import connection.EstoqueDAO;
+import connection.EstoqueControl;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -555,7 +555,7 @@ public class Estoque extends javax.swing.JFrame {
 
     private void jLblButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAdicionarMouseClicked
         // TODO add your handling code here:
-        EstoqueDAO estoque = new EstoqueDAO();
+        EstoqueControl estoque = new EstoqueControl();
         
         String nomeProduto = jTFNomeProduto.getText();
         String categoria = jTFCategoria.getText();

@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author gbresende
  */
-public class EstoqueDAO {
+public class EstoqueControl {
 
     private Conexao conexao;
     private Connection con;
 
-    public EstoqueDAO() {
+    public EstoqueControl() {
         conexao = new Conexao();
         con = conexao.getConnection();
     }
