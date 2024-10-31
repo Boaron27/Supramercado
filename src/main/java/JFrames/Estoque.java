@@ -7,9 +7,15 @@ package JFrames;
 import connection.Conexao;
 import connection.EstoqueDAO;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -220,6 +226,9 @@ public class Estoque extends javax.swing.JFrame {
         jLblButtonAlterar.setOpaque(true);
         jLblButtonAlterar.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLblButtonAlterarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLblButtonAlterarMouseEntered(evt);
             }
@@ -555,21 +564,25 @@ public class Estoque extends javax.swing.JFrame {
     private void jLblButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAdicionarMouseClicked
         // TODO add your handling code here:
         EstoqueDAO estoque = new EstoqueDAO();
-        
+
         String nomeProduto = jTFNomeProduto.getText();
         String categoria = jTFCategoria.getText();
         String marca = jTFMarca.getText();
-        Integer fornecedores = Integer.parseInt( jTFForncedores.getText());
+        Integer fornecedores = Integer.parseInt(jTFForncedores.getText());
         Integer qtdEstoque = Integer.parseInt(jTFQntEstoque.getText());
         Float preco = Float.parseFloat(jTFPreco.getText());
-        
-        if(estoque.inserirProduto(nomeProduto, categoria, marca, fornecedores, qtdEstoque, preco) == true){
-          return;
-        }else{
-          JOptionPane.showMessageDialog(null, "Por favor insira todos os campos", "Atenção!",
-                        JOptionPane.WARNING_MESSAGE);
+
+        if (estoque.inserirProduto(nomeProduto, categoria, marca, fornecedores, qtdEstoque, preco) == true) {
+            return;
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor insira todos os campos", "Atenção!",
+                    JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jLblButtonAdicionarMouseClicked
+
+    private void jLblButtonAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarMouseClicked
+
+    }//GEN-LAST:event_jLblButtonAlterarMouseClicked
 
     /**
      * @param args the command line arguments

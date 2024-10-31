@@ -14,7 +14,7 @@ public class Conexao {
     public Conexao() {
         url = "jdbc:postgresql://localhost:5432/supramercado";
         user = "postgres";
-        password = "XXXXXX";
+        password = "xxxxxxx";
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -56,7 +56,7 @@ public class Conexao {
     }
 
     public boolean login(String usuario, String senha) {
-        String sql = "SELECT FROM funcionarios WHERE usuario = (?) AND senha = (?)";
+        String sql = "SELECT usuario, senha FROM funcionarios WHERE usuario = (?) AND senha = (?)";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, usuario);
@@ -71,7 +71,7 @@ public class Conexao {
             
         }
     }
-
+    
     public Boolean getValidacao() {
         return validacao;
     }

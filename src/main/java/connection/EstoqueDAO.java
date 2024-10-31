@@ -92,6 +92,8 @@ public class EstoqueDAO {
                 estoqueDados.add(id_fornecedor);
                 estoqueDados.add(qtd_estoque);
                 estoqueDados.add(preco);
+                
+                
             }
             System.out.println("Teste de busca por id, executado com sucesso");
             return true;
@@ -103,7 +105,7 @@ public class EstoqueDAO {
     }
 
     public boolean alterarEstoque(String nome, String categoria, String marca, Integer id_fornecedores, Integer qtd_estoque, Float preco, Integer id) {
-        String sql = "UPDATE estoque SET nome_produto = (?), categoria = (?), marca = (?) , id_fornecedores = (?), qtd_estoque = (?), preco = (?) WHERE id = (?)";
+        String sql = "UPDATE estoque SET nome_produto = (?), categoria = (?), marca = (?) , id_fornecedor = (?), qtd_estoque = (?), preco = (?) WHERE id = (?)";
 
         try {
             if (nome == null || categoria == null || marca == null || id_fornecedores == null || qtd_estoque == null || preco == 0 || preco == null) {
@@ -127,6 +129,40 @@ public class EstoqueDAO {
             System.out.println("Erro " + e);
             return false;
         }
+        
+        
+        /* para puxar a tabela do banco ... adicionar no click do atualizar tabela
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
+
+            String sql = "SELECT * FROM estoque";
+            PreparedStatement pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                String id = String.valueOf(rs.getInt("id"));
+                String nome = rs.getString("nome_produto");
+                String categoria = rs.getString("categoria");
+                String marca = rs.getString("marca");
+                String id_fornecedor = String.valueOf(rs.getInt("id_fornecedor"));
+                String qtd_estoque = String.valueOf(rs.getInt("qtd_estoque"));
+                String preco = String.valueOf(rs.getFloat("preco"));
+
+                String tbData[] = {id, nome, categoria, marca, id_fornecedor, qtd_estoque, preco};
+                DefaultTableModel tblModel = (DefaultTableModel) jTEstoque.getModel();
+                tblModel.addRow(tbData);
+            }
+            
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("Erro na conexão: " + e);
+        }
+        
+        */
+        
 
     }
+ 
 }
