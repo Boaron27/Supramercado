@@ -6,6 +6,8 @@ package connection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,7 +22,7 @@ public class FuncionariosControl {
         conexao = new Conexao();
         con = conexao.getConnection();
     }
-   
+
     public boolean inserirFuncionario(String nome, String cpf, String usuario, String senha, String cargo) {
 
         String sql = "INSERT INTO funcionarios(nome,cpf,usuario,senha,cargo) VALUES (?,?,?,?,?)";
@@ -44,9 +46,9 @@ public class FuncionariosControl {
             System.out.println("Erro " + e);
             return false;
         }
-    
+
     }
-    
+
     public boolean removerFornecedorPorNome(String nome) {
 
         String sql = "DELETE FROM funcionarios WHERE nome = (?)";
@@ -65,7 +67,7 @@ public class FuncionariosControl {
             return false;
         }
     }
-    
+
     public boolean removerFornecedorPorCargo(String cargo) {
 
         String sql = "DELETE FROM funcionarios WHERE cargo = (?)";
@@ -84,7 +86,7 @@ public class FuncionariosControl {
             return false;
         }
     }
-    
+
     public boolean removerFornecedorPorUsuario(String usuario) {
 
         String sql = "DELETE FROM funcionarios WHERE usuario = (?)";
@@ -103,7 +105,7 @@ public class FuncionariosControl {
             return false;
         }
     }
-    
+
     public boolean removerFornecedorGeral(String usuario, String nome, String cargo) {
 
         String sql = "DELETE FROM funcionarios WHERE usuario = (?) AND nome = (?) AND cargo = (?)";
@@ -122,6 +124,60 @@ public class FuncionariosControl {
             return false;
         }
     }
+
+    public boolean buscarPorID(Integer id) {
+        String sql = "SELECT nome,cpf,usuario,senha,cargo FROM funcionarios WHERE id = (?)";
+
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+
+            ArrayList<String> funcionarioDados = new ArrayList<>();
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                String cpf = rs.getString("cpf");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
+                String cargo = rs.getString("cargo");
+
+                funcionarioDados.add(nome);
+                funcionarioDados.add(cpf);
+                funcionarioDados.add(usuario);
+                funcionarioDados.add(senha);
+                funcionarioDados.add(cargo);
+            }
+            System.out.println("Teste de busca por id, executado com sucesso");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Erro " + e);
+            return false;
+        }
+    }
+
+    public boolean alterarFuncionario(String nome, String cpf, String usuario, String senha, String cargo, Integer id) {
+        String sql = "UPDATE funcionarios SET nome = (?), cpf = (?), usuario = (?) , senha = (?), cargo = (?)  WHERE id = (?)";
+
+        try {
+            if (nome == null || cpf == null || usuario == null || senha == null || cargo == null) {
+                return false;
+            } else {
+                PreparedStatement pstm = con.prepareStatement(sql);
+                pstm.setString(1, nome);
+                pstm.setString(2, cpf);
+                pstm.setString(3, usuario);
+                pstm.setString(4, senha);
+                pstm.setString(5, cargo);
+                pstm.setInt(6, id);
+
+                pstm.executeUpdate();
+                System.out.println("Teste de funcionamento para inserção de " + nome + " na tabela fornecedor");
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro " + e);
+            return false;
+        }
+    }
 }
-
-
