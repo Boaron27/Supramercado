@@ -106,7 +106,7 @@ public class FornecedoresControl {
                 pstm.setString(3, status);
                 pstm.setInt(4, id);
                 pstm.executeUpdate();
-                System.out.println("Teste de funcionamento para inserção de " + nome + " na tabela fornecedor");
+                System.out.println("Teste de alteração na tabela fornecedor realizado com sucesso!");
                 return true;
             }
 

@@ -10,12 +10,11 @@ public class Conexao {
 
     private String url, user, password;
     private Connection con;
-    private Boolean validacao;
     
     public Conexao() {
         url = "jdbc:postgresql://localhost:5432/supramercado";
         user = "postgres";
-        password = "210058";
+        password = "XXXXX";
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -32,27 +31,6 @@ public class Conexao {
         } catch (SQLException e) {
             System.out.println("Erro ao conectar: " + e.getMessage());
             return null;
-        }
-    }
-
-
-    
-    public boolean removerPorIdUsuario(Integer id) {
-
-        String sql = "DELETE FROM alunos WHERE id = (?)";
-
-        try {
-            PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setInt(1, id);
-            pstm.executeUpdate();
-            pstm.close();
-            con.close();
-
-            System.out.println("Teste de funcionamento para deletar o id : " + id + " na tabela aluno");
-            return true;
-        } catch (Exception e) {
-            System.out.println("Deu certo não :(");
-            return false;
         }
     }
 
@@ -73,16 +51,9 @@ public class Conexao {
             }
 
         } catch (Exception e) {
-            System.out.println("Email ou senha invalido!" + e);
+            System.out.println("Erro: " + e);
             return false;
             
         }
-    }
-    
-    public Boolean getValidacao() {
-        return validacao;
-    }
-    
-    
-    
+    }  
 }

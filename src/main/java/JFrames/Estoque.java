@@ -599,7 +599,7 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
 
             String sql = "SELECT e.id,e.nome_produto,e.categoria,e.marca,f.nome,e.qtd_estoque,e.preco FROM estoque e INNER JOIN fornecedores f ON e.id_fornecedor = f.id Order by id";
             PreparedStatement pstm = con.prepareStatement(sql);

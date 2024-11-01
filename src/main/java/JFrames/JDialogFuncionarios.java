@@ -278,7 +278,7 @@ public class JDialogFuncionarios extends javax.swing.JDialog {
 
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
 
             String sql = "SELECT nome,cpf,usuario,senha,cargo FROM funcionarios WHERE id = (?)";
             PreparedStatement pstm = con.prepareStatement(sql);

@@ -266,7 +266,7 @@ public class JDialogVendas extends javax.swing.JDialog {
 
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
 
             String sql = "SELECT data_venda,id_produto,qtd FROM vendas WHERE id = (?)";
             PreparedStatement pstm = con.prepareStatement(sql);

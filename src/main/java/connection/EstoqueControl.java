@@ -60,7 +60,7 @@ public class EstoqueControl {
             pstm.setString(2, marca);
             pstm.executeUpdate();
 
-            System.out.println("Teste de funcionamento para deletar " + nome + " na tabela aluno");
+            System.out.println("Deletado com sucesso o produto " + nome);
             return true;
         } catch (Exception e) {
             System.out.println("erro" + e );

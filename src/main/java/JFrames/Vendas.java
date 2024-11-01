@@ -4,6 +4,7 @@
  */
 package JFrames;
 
+import connection.Conexao;
 import connection.VendasControl;
 import java.awt.Color;
 import java.sql.Connection;
@@ -25,11 +26,18 @@ public class Vendas extends javax.swing.JFrame {
     /**
      * Creates new form Vendas
      */
+    
+    private Conexao conexao;
+    private Connection con;
     public Vendas() {
         initComponents();
+        conexao = new Conexao();
+        con = conexao.getConnection();
     }
 
     VendasControl vendas = new VendasControl();
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -516,7 +524,7 @@ public class Vendas extends javax.swing.JFrame {
         Integer id_produto = Integer.parseInt(jTFProduto.getText());
         Integer qtd = Integer.parseInt(jTFQuantidade.getText());
 
-        if (vendas.inserirProduto(data_venda, id_produto, qtd) == true) {
+        if (vendas.inserirVenda(data_venda, id_produto, qtd) == true) {
             return;
         } else {
             JOptionPane.showMessageDialog(null, "Por favor insira todos os campos", "Atenção!",
@@ -546,11 +554,7 @@ public class Vendas extends javax.swing.JFrame {
 
     private void jLblButtonVisualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseClicked
         // TODO add your handling code here:
-
         try {
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
-
             String sql = "SELECT v.id,v.data_venda,p.nome_produto,v.qtd , p.preco FROM vendas v INNER JOIN estoque p ON p.id=v.id_produto ORDER BY id;";
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();

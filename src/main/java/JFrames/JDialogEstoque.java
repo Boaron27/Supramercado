@@ -304,7 +304,7 @@ public class JDialogEstoque extends javax.swing.JDialog {
 
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
 
             String sql = "SELECT nome_produto,categoria,marca,id_fornecedor,qtd_estoque,preco FROM estoque WHERE id = (?)";
             PreparedStatement pstm = con.prepareStatement(sql);

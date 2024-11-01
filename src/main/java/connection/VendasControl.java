@@ -24,7 +24,7 @@ public class VendasControl {
         con = conexao.getConnection();
     }
 
-    public boolean inserirProduto(Date data_venda, Integer id_produto, Integer qtd) {
+    public boolean inserirVenda(Date data_venda, Integer id_produto, Integer qtd) {
 
         String sql = "INSERT INTO vendas(data_venda,id_produto,qtd) VALUES (?,?,?)";
 
@@ -37,7 +37,7 @@ public class VendasControl {
                 pstm.setInt(2, id_produto);
                 pstm.setInt(3, qtd);
                 pstm.executeUpdate();
-                System.out.println("Teste de funcionamento para inserção de " + data_venda + " na tabela aluno");
+                System.out.println("Teste de funcionamento para inserção de " + data_venda + " na tabela vendas");
                 return true;
             }
 

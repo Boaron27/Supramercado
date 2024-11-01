@@ -552,7 +552,7 @@ public class Fornecedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
 
             String sql = "SELECT * FROM fornecedores Order by id";
             PreparedStatement pstm = con.prepareStatement(sql);
