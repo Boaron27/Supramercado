@@ -117,7 +117,11 @@ public class Login extends javax.swing.JFrame {
         jLabelEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelEmail.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+<<<<<<< HEAD
         jLabelEmail.setText("Usuario");
+=======
+        jLabelEmail.setText("Email");
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 
         jPFSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPFSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -260,10 +264,15 @@ public class Login extends javax.swing.JFrame {
     private void jLabelButtonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelButtonLoginMouseClicked
         // TODO add your handling code here:
         Conexao conexao = new Conexao();
+<<<<<<< HEAD
         String usuario = jTFEmail.getText();
         String senha = jPFSenha.getText();
 
         if (conexao.login(usuario, senha) == true) {
+=======
+        conexao.login(jTFEmail.getText() , jPFSenha.getText());
+        if (conexao.getValidacao() == true) {
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             Menu menu = new Menu();
             menu.setVisible(true);
             this.setVisible(false);

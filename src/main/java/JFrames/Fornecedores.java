@@ -198,14 +198,21 @@ public class Fornecedores extends javax.swing.JFrame {
         jLblButtonAlterarStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLblButtonAlterarStatus.setForeground(new java.awt.Color(255, 255, 255));
         jLblButtonAlterarStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+<<<<<<< HEAD
         jLblButtonAlterarStatus.setText("Remover");
+=======
+        jLblButtonAlterarStatus.setText("Alterar status");
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
         jLblButtonAlterarStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
         jLblButtonAlterarStatus.setOpaque(true);
         jLblButtonAlterarStatus.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonAlterarStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+<<<<<<< HEAD
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLblButtonAlterarStatusMouseClicked(evt);
             }
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLblButtonAlterarStatusMouseEntered(evt);
             }
@@ -326,8 +333,11 @@ public class Fornecedores extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+<<<<<<< HEAD
         jLblButtonAlterarStatus.getAccessibleContext().setAccessibleName("Remover\n");
 
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -499,6 +509,23 @@ public class Fornecedores extends javax.swing.JFrame {
         jLblButtonAdicionar2.setBorder(border);
     }//GEN-LAST:event_jLblButtonAdicionar2MouseExited
 
+<<<<<<< HEAD
+=======
+    private void jLblButtonAlterarStatusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarStatusMouseEntered
+        // TODO add your handling code here:
+        jLblButtonAlterarStatus.setBackground(new Color(38, 133, 196));
+        Border border = BorderFactory.createLineBorder(new Color(31, 43, 68), 2);
+        jLblButtonAlterarStatus.setBorder(border);
+    }//GEN-LAST:event_jLblButtonAlterarStatusMouseEntered
+
+    private void jLblButtonAlterarStatusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarStatusMouseExited
+        // TODO add your handling code here:
+        jLblButtonAlterarStatus.setBackground(new Color(31, 43, 68));
+        Border border = BorderFactory.createLineBorder(new Color(38, 133, 196), 2);
+        jLblButtonAlterarStatus.setBorder(border);
+    }//GEN-LAST:event_jLblButtonAlterarStatusMouseExited
+
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
     private void jLblButtonAdicionar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAdicionar2MouseClicked
         FornecedoresControl fornecedores = new FornecedoresControl();
 
@@ -552,9 +579,15 @@ public class Fornecedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Class.forName("org.postgresql.Driver");
+<<<<<<< HEAD
             Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
 
             String sql = "SELECT * FROM fornecedores Order by id";
+=======
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
+
+            String sql = "SELECT * FROM fornecedores";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             DefaultTableModel tblModel = (DefaultTableModel) jTFornecedores.getModel();
@@ -578,6 +611,7 @@ public class Fornecedores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLblButtonVisualizarMouseClicked
 
+<<<<<<< HEAD
     private void jLblButtonAlterarStatusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarStatusMouseExited
         // TODO add your handling code here:
         jLblButtonAlterarStatus.setBackground(new Color(31, 43, 68));
@@ -605,6 +639,8 @@ public class Fornecedores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLblButtonAlterarStatusMouseClicked
 
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
     /**
      * @param args the command line arguments
      */

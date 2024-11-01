@@ -48,15 +48,24 @@ public class VendasControl {
 
     }
 
+<<<<<<< HEAD
     public boolean removerVenda(Date data_venda, Integer id_produto, Integer qtd) {
 
         String sql = "DELETE FROM vendas WHERE id_produto = (?) AND data_venda = (?) AND qtd = (?) ";
+=======
+    public boolean removerProduto(Date data_venda, Integer id_produto, Integer qtd) {
+
+        String sql = "DELETE FROM vendas WHERE id_produto = (?) AND data_venda = (?)";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, id_produto);
             pstm.setDate(2, data_venda);
+<<<<<<< HEAD
             pstm.setInt(3, qtd);
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             pstm.executeUpdate();
 
             System.out.println("Teste de funcionamento para deletar " + id_produto + " na tabela aluno");
@@ -95,7 +104,11 @@ public class VendasControl {
     }
 
     public boolean alterarVenda(Date data_venda, Integer id_produto, Integer qtd, Integer id) {
+<<<<<<< HEAD
         String sql = "UPDATE vendas SET data_venda = (?), id_produto = (?), qtd = (?) WHERE id = (?)";
+=======
+        String sql = "UPDATE fornecedores SET data_venda = (?), id_produto = (?), qtd = (?) WHERE id = (?)";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 
         try {
             if (data_venda == null || id_produto == null || qtd == null) {

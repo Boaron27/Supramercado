@@ -406,7 +406,10 @@
                     </Property>
                   </Properties>
                   <Events>
+<<<<<<< HEAD
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLblButtonRemoverMouseClicked"/>
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLblButtonRemoverMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLblButtonRemoverMouseExited"/>
                   </Events>

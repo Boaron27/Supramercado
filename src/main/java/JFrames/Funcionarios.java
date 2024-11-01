@@ -572,12 +572,43 @@ public class Funcionarios extends javax.swing.JFrame {
         String cargo = jTFCargo.getText();
         String usuario = jTFUsuario.getText();
 
+<<<<<<< HEAD
         if (funcionarios.removerFornecedorPorNome(nome) == true) {
             return;
         } else {
             JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este nome, por favor verifique!", "Erro",
                     JOptionPane.WARNING_MESSAGE);
 
+=======
+        if (usuario == null && cargo == null) {
+            if (funcionarios.removerFornecedorPorNome(nome) == true) {
+                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este nome, por favor verifique!", "Erro",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } else if (nome == null && usuario == null) {
+            if (funcionarios.removerFornecedorPorCargo(cargo) == true) {
+                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este cargo, por favor verifique!", "Erro",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } else if (nome == null && cargo == null) {
+            if (funcionarios.removerFornecedorPorUsuario(usuario) == true) {
+                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este usuario, por favor verifique!", "Erro",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            if (funcionarios.removerFornecedorGeral(usuario, nome, cargo) == true) {
+                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este usuario, por favor verifique!", "Erro",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
         }
 
     }//GEN-LAST:event_JLblButtonRemoverMouseClicked
@@ -604,11 +635,19 @@ public class Funcionarios extends javax.swing.JFrame {
 
     private void JLblButtonVisualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonVisualizarMouseClicked
         // TODO add your handling code here:
+<<<<<<< HEAD
         try {
             Class.forName("org.postgresql.Driver");
             Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
 
             String sql = "SELECT f.id, f.nome, f.cpf, f.usuario, f.senha, f.cargo FROM public.funcionarios f ORDER BY ID";
+=======
+         try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
+
+            String sql = "SELECT * FROM funcionarios";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             DefaultTableModel tblModel = (DefaultTableModel) jTFuncionarios.getModel();
@@ -621,12 +660,22 @@ public class Funcionarios extends javax.swing.JFrame {
                 String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
                 String cargo = rs.getString("cargo");
+<<<<<<< HEAD
 
                 String tbData[] = {id, nome, cpf, usuario, senha, cargo};
 
                 tblModel.addRow(tbData);
             }
 
+=======
+                
+
+                String tbData[] = {id,nome, cpf, usuario, senha, cargo};
+                
+                tblModel.addRow(tbData);
+            }
+            
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             con.close();
 
         } catch (Exception e) {

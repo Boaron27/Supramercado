@@ -52,7 +52,11 @@ public class EstoqueControl {
 
     public boolean removerProduto(String nome, String marca) {
 
+<<<<<<< HEAD
         String sql = "DELETE FROM estoque WHERE nome_produto = (?) AND marca = (?)";
+=======
+        String sql = "DELETE FROM estoque WHERE nome = (?) AND marca = (?)";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -63,7 +67,11 @@ public class EstoqueControl {
             System.out.println("Teste de funcionamento para deletar " + nome + " na tabela aluno");
             return true;
         } catch (Exception e) {
+<<<<<<< HEAD
             System.out.println("erro" + e );
+=======
+            System.out.println("Deu certo não :(");
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             return false;
         }
     }

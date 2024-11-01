@@ -49,7 +49,11 @@ public class FornecedoresControl {
 
     public boolean removerFornecedor(String nome) {
 
+<<<<<<< HEAD
         String sql = "DELETE FROM fornecedores WHERE nome = (?)";
+=======
+        String sql = "DELETE FROM fonecedor WHERE nome = (?)";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -61,7 +65,11 @@ public class FornecedoresControl {
             System.out.println("Teste de funcionamento para deletar " + nome + " na tabela fornecedores");
             return true;
         } catch (Exception e) {
+<<<<<<< HEAD
             System.out.println("Erro" + e);
+=======
+            System.out.println("Deu certo não :(");
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             return false;
         }
     }

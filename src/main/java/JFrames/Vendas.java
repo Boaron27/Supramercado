@@ -205,9 +205,12 @@ public class Vendas extends javax.swing.JFrame {
         jLblButtonRemover.setOpaque(true);
         jLblButtonRemover.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonRemover.addMouseListener(new java.awt.event.MouseAdapter() {
+<<<<<<< HEAD
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLblButtonRemoverMouseClicked(evt);
             }
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLblButtonRemoverMouseEntered(evt);
             }
@@ -513,10 +516,17 @@ public class Vendas extends javax.swing.JFrame {
 
     private void jLblButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAdicionarMouseClicked
         Date data_venda = Date.valueOf(jTFDataDaVenda.getText());
+<<<<<<< HEAD
         Integer id_produto = Integer.parseInt(jTFProduto.getText());
         Integer qtd = Integer.parseInt(jTFQuantidade.getText());
 
         if (vendas.inserirProduto(data_venda, id_produto, qtd) == true) {
+=======
+        //TODO Integer id_produto = 
+        Integer qtd = Integer.parseInt(jTFQuantidade.getText());
+
+        if (vendas.inserirProduto(data_venda, WIDTH, qtd) == true) {
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             return;
         } else {
             JOptionPane.showMessageDialog(null, "Por favor insira todos os campos", "Atenção!",
@@ -549,9 +559,15 @@ public class Vendas extends javax.swing.JFrame {
 
         try {
             Class.forName("org.postgresql.Driver");
+<<<<<<< HEAD
             Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
 
             String sql = "SELECT v.id,v.data_venda,p.nome_produto,v.qtd , p.preco FROM vendas v INNER JOIN estoque p ON p.id=v.id_produto ORDER BY id;";
+=======
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
+
+            String sql = "SELECT v.id,v.data_venda,p.nome_produto,v.qtd , p.preco FROM vendas v INNER JOIN estoque p ON p.id=v.id_produto;";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
 
@@ -578,6 +594,7 @@ public class Vendas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLblButtonVisualizarMouseClicked
 
+<<<<<<< HEAD
     private void jLblButtonRemoverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonRemoverMouseClicked
         // TODO add your handling code here:
         
@@ -596,6 +613,8 @@ public class Vendas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLblButtonRemoverMouseClicked
 
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
     /**
      * @param args the command line arguments
      */

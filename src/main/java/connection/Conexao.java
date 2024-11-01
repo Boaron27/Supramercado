@@ -3,7 +3,10 @@ package connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+<<<<<<< HEAD
 import java.sql.ResultSet;
+=======
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 import java.sql.SQLException;
 
 public class Conexao {
@@ -15,7 +18,11 @@ public class Conexao {
     public Conexao() {
         url = "jdbc:postgresql://localhost:5432/supramercado";
         user = "postgres";
+<<<<<<< HEAD
         password = "210058";
+=======
+        password = "SENHABANCO";
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -62,6 +69,7 @@ public class Conexao {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, usuario);
             pstm.setString(2, senha);
+<<<<<<< HEAD
             
             ResultSet rs = pstm.executeQuery();
             
@@ -74,6 +82,14 @@ public class Conexao {
 
         } catch (Exception e) {
             System.out.println("Email ou senha invalido!" + e);
+=======
+            pstm.executeUpdate();
+            validacao = true;
+            return true;
+        } catch (Exception e) {
+            System.out.println("Email ou senha invalido!" + e);
+            validacao = false;
+>>>>>>> 62213652172e1655ce589b939b184d445d05b620
             return false;
             
         }
