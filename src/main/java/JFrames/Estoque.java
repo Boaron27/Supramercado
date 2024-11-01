@@ -4,10 +4,6 @@
  */
 package JFrames;
 
-<<<<<<< HEAD
-=======
-import connection.Conexao;
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
 import connection.EstoqueControl;
 import java.awt.Color;
 import java.sql.Connection;
@@ -16,10 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-<<<<<<< HEAD
-=======
-import javax.swing.JTable;
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
@@ -217,12 +209,9 @@ public class Estoque extends javax.swing.JFrame {
         jLblButtonRemover.setOpaque(true);
         jLblButtonRemover.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonRemover.addMouseListener(new java.awt.event.MouseAdapter() {
-<<<<<<< HEAD
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLblButtonRemoverMouseClicked(evt);
             }
-=======
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLblButtonRemoverMouseEntered(evt);
             }
@@ -610,15 +599,9 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Class.forName("org.postgresql.Driver");
-<<<<<<< HEAD
             Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "210058");
 
             String sql = "SELECT e.id,e.nome_produto,e.categoria,e.marca,f.nome,e.qtd_estoque,e.preco FROM estoque e INNER JOIN fornecedores f ON e.id_fornecedor = f.id Order by id";
-=======
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
-
-            String sql = "SELECT e.id,e.nome_produto,e.categoria,e.marca,f.nome,e.qtd_estoque,e.preco FROM estoque e INNER JOIN fornecedores f ON e.id_fornecedor = f.id";
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             DefaultTableModel tblModel = (DefaultTableModel) jTEstoque.getModel();
@@ -659,7 +642,6 @@ public class Estoque extends javax.swing.JFrame {
         jLblButtonVisualizar.setBorder(border);
     }//GEN-LAST:event_jLblButtonVisualizarMouseExited
 
-<<<<<<< HEAD
     private void jLblButtonRemoverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonRemoverMouseClicked
         EstoqueControl estoque = new EstoqueControl();
         
@@ -676,8 +658,6 @@ public class Estoque extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLblButtonRemoverMouseClicked
 
-=======
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
     /**
      * @param args the command line arguments
      */

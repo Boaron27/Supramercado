@@ -236,11 +236,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-<<<<<<< HEAD
             <Property name="text" type="java.lang.String" value="Usuario"/>
-=======
-            <Property name="text" type="java.lang.String" value="Email"/>
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPFSenha">

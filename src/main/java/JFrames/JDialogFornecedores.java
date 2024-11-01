@@ -4,7 +4,6 @@
  */
 package JFrames;
 
-<<<<<<< HEAD
 import connection.FornecedoresControl;
 import java.awt.Color;
 import java.sql.Connection;
@@ -14,10 +13,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-=======
-import java.awt.Color;
-import javax.swing.BorderFactory;
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
 import javax.swing.border.Border;
 
 /**
@@ -252,7 +247,6 @@ public class JDialogFornecedores extends javax.swing.JDialog {
 
     private void jLblButtonProcurarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonProcurarMouseClicked
         // TODO add your handling code here:
-<<<<<<< HEAD
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -293,12 +287,6 @@ public class JDialogFornecedores extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Erro " + e);
         }
-=======
-        jTFNomeFornecedor.setEnabled(true);
-        jTFStatus.setEnabled(true);
-        jTFTelefone.setEnabled(true);
-
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
     }//GEN-LAST:event_jLblButtonProcurarMouseClicked
 
     private void jLblButtonProcurarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonProcurarMouseEntered
@@ -317,7 +305,6 @@ public class JDialogFornecedores extends javax.swing.JDialog {
 
     private void jLblButtonAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAtualizarMouseClicked
         // TODO add your handling code here:
-<<<<<<< HEAD
         FornecedoresControl fornecedores = new FornecedoresControl();
 
         String nome = jTFNomeFornecedor.getText();
@@ -331,8 +318,6 @@ public class JDialogFornecedores extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Adicione todas informações sobre um novo fornecedor", "Erro",
                     JOptionPane.WARNING_MESSAGE);
         }
-=======
->>>>>>> 62213652172e1655ce589b939b184d445d05b620
     }//GEN-LAST:event_jLblButtonAtualizarMouseClicked
 
     private void jLblButtonAtualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAtualizarMouseEntered
