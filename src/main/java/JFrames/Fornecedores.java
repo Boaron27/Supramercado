@@ -6,9 +6,14 @@ package JFrames;
 
 import connection.FornecedoresControl;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -50,12 +55,15 @@ public class Fornecedores extends javax.swing.JFrame {
         jTFStatus = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLblButtonAlterar = new javax.swing.JLabel();
+        jLblButtonVisualizar = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTFornecedores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fornecedores");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -173,7 +181,7 @@ public class Fornecedores extends javax.swing.JFrame {
         jLblButtonAdicionar2.setText("Adicionar ");
         jLblButtonAdicionar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
         jLblButtonAdicionar2.setOpaque(true);
-        jLblButtonAdicionar2.setPreferredSize(new java.awt.Dimension(250, 30));
+        jLblButtonAdicionar2.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonAdicionar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLblButtonAdicionar2MouseClicked(evt);
@@ -193,7 +201,7 @@ public class Fornecedores extends javax.swing.JFrame {
         jLblButtonAlterarStatus.setText("Alterar status");
         jLblButtonAlterarStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
         jLblButtonAlterarStatus.setOpaque(true);
-        jLblButtonAlterarStatus.setPreferredSize(new java.awt.Dimension(250, 30));
+        jLblButtonAlterarStatus.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonAlterarStatus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLblButtonAlterarStatusMouseEntered(evt);
@@ -224,30 +232,74 @@ public class Fornecedores extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Status");
 
+        jLblButtonAlterar.setBackground(new java.awt.Color(31, 43, 68));
+        jLblButtonAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLblButtonAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        jLblButtonAlterar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblButtonAlterar.setText("Alterar");
+        jLblButtonAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
+        jLblButtonAlterar.setOpaque(true);
+        jLblButtonAlterar.setPreferredSize(new java.awt.Dimension(200, 30));
+        jLblButtonAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLblButtonAlterarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLblButtonAlterarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLblButtonAlterarMouseExited(evt);
+            }
+        });
+
+        jLblButtonVisualizar.setBackground(new java.awt.Color(31, 43, 68));
+        jLblButtonVisualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLblButtonVisualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jLblButtonVisualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblButtonVisualizar.setText("Visualizar");
+        jLblButtonVisualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
+        jLblButtonVisualizar.setOpaque(true);
+        jLblButtonVisualizar.setPreferredSize(new java.awt.Dimension(200, 30));
+        jLblButtonVisualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLblButtonVisualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLblButtonVisualizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLblButtonVisualizarMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLblButtonAdicionar2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLblButtonAlterarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLblButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(46, 46, 46))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jLblButtonAdicionar2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130)
-                .addComponent(jLblButtonAlterarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,10 +314,12 @@ public class Fornecedores extends javax.swing.JFrame {
                     .addComponent(jTFNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLblButtonAlterarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLblButtonAdicionar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblButtonAlterarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -277,26 +331,7 @@ public class Fornecedores extends javax.swing.JFrame {
         jTFornecedores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTFornecedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", ""},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Telefone", "Status"
@@ -331,14 +366,14 @@ public class Fornecedores extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE)
+            .addComponent(jPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -357,11 +392,11 @@ public class Fornecedores extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -475,19 +510,82 @@ public class Fornecedores extends javax.swing.JFrame {
 
     private void jLblButtonAdicionar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAdicionar2MouseClicked
         FornecedoresControl fornecedores = new FornecedoresControl();
-        
+
         String nome = jTFNomeFornecedor.getText();
-       String telefone = jTFTelefone.getText();
-       String status = jTFStatus.getText();
-       
-       if(fornecedores.inserirFonecedor(nome, telefone, status) == true){
-           return;
-       }
-       else{
-           JOptionPane.showMessageDialog(null, "Adicione todas informações sobre um novo fornecedor", "Erro",
-                        JOptionPane.WARNING_MESSAGE);
-       }
+        String telefone = jTFTelefone.getText();
+        String status = jTFStatus.getText();
+
+        if (fornecedores.inserirFonecedor(nome, telefone, status) == true) {
+            return;
+        } else {
+            JOptionPane.showMessageDialog(null, "Adicione todas informações sobre um novo fornecedor", "Erro",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jLblButtonAdicionar2MouseClicked
+
+    private void jLblButtonAlterarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarMouseEntered
+        // TODO add your handling code here:
+        jLblButtonAlterar.setBackground(new Color(38, 133, 196));
+        Border border = BorderFactory.createLineBorder(new Color(31, 43, 68), 2);
+        jLblButtonAlterar.setBorder(border);
+    }//GEN-LAST:event_jLblButtonAlterarMouseEntered
+
+    private void jLblButtonAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarMouseExited
+        // TODO add your handling code here:
+        jLblButtonAlterar.setBackground(new Color(31, 43, 68));
+        Border border = BorderFactory.createLineBorder(new Color(38, 133, 196), 2);
+        jLblButtonAlterar.setBorder(border);
+    }//GEN-LAST:event_jLblButtonAlterarMouseExited
+
+    private void jLblButtonVisualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseEntered
+        // TODO add your handling code here:
+        jLblButtonVisualizar.setBackground(new Color(38, 133, 196));
+        Border border = BorderFactory.createLineBorder(new Color(31, 43, 68), 2);
+        jLblButtonVisualizar.setBorder(border);
+    }//GEN-LAST:event_jLblButtonVisualizarMouseEntered
+
+    private void jLblButtonVisualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseExited
+        // TODO add your handling code here:
+        jLblButtonVisualizar.setBackground(new Color(31, 43, 68));
+        Border border = BorderFactory.createLineBorder(new Color(38, 133, 196), 2);
+        jLblButtonVisualizar.setBorder(border);
+    }//GEN-LAST:event_jLblButtonVisualizarMouseExited
+
+    private void jLblButtonAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarMouseClicked
+        // TODO add your handling code here:
+        JDialogFornecedores dialog = new JDialogFornecedores(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jLblButtonAlterarMouseClicked
+
+    private void jLblButtonVisualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseClicked
+        // TODO add your handling code here:
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
+
+            String sql = "SELECT * FROM fornecedores";
+            PreparedStatement pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            DefaultTableModel tblModel = (DefaultTableModel) jTFornecedores.getModel();
+            tblModel.setRowCount(0);
+            
+            while (rs.next()) {
+                String id = String.valueOf(rs.getInt("id"));
+                String nome = rs.getString("nome");
+                String telefone = rs.getString("telefone");
+                String status = rs.getString("status");
+
+                String tbData[] = {id, nome, telefone, status};
+
+                tblModel.addRow(tbData);
+            }
+
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("Erro na conexão: " + e);
+        }
+    }//GEN-LAST:event_jLblButtonVisualizarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -530,12 +628,14 @@ public class Fornecedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLblButtonAdicionar2;
+    private javax.swing.JLabel jLblButtonAlterar;
     private javax.swing.JLabel jLblButtonAlterarStatus;
     private javax.swing.JLabel jLblButtonEstoque;
     private javax.swing.JLabel jLblButtonFornecedores;
     private javax.swing.JLabel jLblButtonFuncionarios;
     private javax.swing.JLabel jLblButtonMenu;
     private javax.swing.JLabel jLblButtonVendas;
+    private javax.swing.JLabel jLblButtonVisualizar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

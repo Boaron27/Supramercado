@@ -64,12 +64,14 @@ public class Estoque extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLblButtonVisualizar = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTEstoque = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estoque");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -274,10 +276,31 @@ public class Estoque extends javax.swing.JFrame {
         jLabel5.setText("Qnt. Estoque ");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Fornecedores");
+        jLabel6.setText("Fornecedor");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Preço");
+
+        jLblButtonVisualizar.setBackground(new java.awt.Color(31, 43, 68));
+        jLblButtonVisualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLblButtonVisualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jLblButtonVisualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblButtonVisualizar.setText("Visualizar");
+        jLblButtonVisualizar.setToolTipText("");
+        jLblButtonVisualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
+        jLblButtonVisualizar.setOpaque(true);
+        jLblButtonVisualizar.setPreferredSize(new java.awt.Dimension(200, 30));
+        jLblButtonVisualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLblButtonVisualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLblButtonVisualizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLblButtonVisualizarMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -285,13 +308,6 @@ public class Estoque extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jLblButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jLblButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,8 +320,19 @@ public class Estoque extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLblButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLblButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLblButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFForncedores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -342,7 +369,8 @@ public class Estoque extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLblButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLblButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -354,29 +382,10 @@ public class Estoque extends javax.swing.JFrame {
         jTEstoque.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "", "", "", ""},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Nome", "Categoria", "Marca", "Fornecedores", "Qnt. Estoque", "Preço"
+                "ID", "Nome", "Categoria", "Marca", "Fornecedor", "Qnt. Estoque", "Preço"
             }
         ));
         jTEstoque.setGridColor(new java.awt.Color(0, 0, 0));
@@ -581,8 +590,56 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jLblButtonAdicionarMouseClicked
 
     private void jLblButtonAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonAlterarMouseClicked
-
+        JDialogEstoque dialog = new JDialogEstoque(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jLblButtonAlterarMouseClicked
+
+    private void jLblButtonVisualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseClicked
+        // TODO add your handling code here:
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
+
+            String sql = "SELECT e.id,e.nome_produto,e.categoria,e.marca,f.nome,e.qtd_estoque,e.preco FROM estoque e INNER JOIN fornecedores f ON e.id_fornecedor = f.id";
+            PreparedStatement pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            DefaultTableModel tblModel = (DefaultTableModel) jTEstoque.getModel();
+            tblModel.setRowCount(0);
+
+            while (rs.next()) {
+                String id = String.valueOf(rs.getInt("id"));
+                String nome = rs.getString("nome_produto");
+                String categoria = rs.getString("categoria");
+                String marca = rs.getString("marca");
+                String id_fornecedor = rs.getString("nome");
+                String qtd_estoque = String.valueOf(rs.getInt("qtd_estoque"));
+                String preco = String.valueOf(rs.getFloat("preco"));
+
+                String tbData[] = {id, nome, categoria, marca, id_fornecedor, qtd_estoque, preco};
+                
+                tblModel.addRow(tbData);
+            }
+            
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("Erro na conexão: " + e);
+        }
+    }//GEN-LAST:event_jLblButtonVisualizarMouseClicked
+
+    private void jLblButtonVisualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseEntered
+        // TODO add your handling code here:
+        jLblButtonVisualizar.setBackground(new Color(38, 133, 196));
+        Border border = BorderFactory.createLineBorder(new Color(31, 43, 68), 2);
+        jLblButtonVisualizar.setBorder(border);
+    }//GEN-LAST:event_jLblButtonVisualizarMouseEntered
+
+    private void jLblButtonVisualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblButtonVisualizarMouseExited
+        // TODO add your handling code here:
+        jLblButtonVisualizar.setBackground(new Color(31, 43, 68));
+        Border border = BorderFactory.createLineBorder(new Color(38, 133, 196), 2);
+        jLblButtonVisualizar.setBorder(border);
+    }//GEN-LAST:event_jLblButtonVisualizarMouseExited
 
     /**
      * @param args the command line arguments
@@ -635,6 +692,7 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JLabel jLblButtonMenu;
     private javax.swing.JLabel jLblButtonRemover;
     private javax.swing.JLabel jLblButtonVendas;
+    private javax.swing.JLabel jLblButtonVisualizar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

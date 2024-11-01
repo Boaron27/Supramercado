@@ -14,7 +14,7 @@ public class Conexao {
     public Conexao() {
         url = "jdbc:postgresql://localhost:5432/supramercado";
         user = "postgres";
-        password = "xxxxxxx";
+        password = "SENHABANCO";
 
         try {
             Class.forName("org.postgresql.Driver");

@@ -130,39 +130,6 @@ public class EstoqueControl {
             return false;
         }
         
-        
-        /* para puxar a tabela do banco ... adicionar no click do atualizar tabela
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "xxxxxx");
-
-            String sql = "SELECT * FROM estoque";
-            PreparedStatement pstm = con.prepareStatement(sql);
-            ResultSet rs = pstm.executeQuery();
-
-            while (rs.next()) {
-                String id = String.valueOf(rs.getInt("id"));
-                String nome = rs.getString("nome_produto");
-                String categoria = rs.getString("categoria");
-                String marca = rs.getString("marca");
-                String id_fornecedor = String.valueOf(rs.getInt("id_fornecedor"));
-                String qtd_estoque = String.valueOf(rs.getInt("qtd_estoque"));
-                String preco = String.valueOf(rs.getFloat("preco"));
-
-                String tbData[] = {id, nome, categoria, marca, id_fornecedor, qtd_estoque, preco};
-                DefaultTableModel tblModel = (DefaultTableModel) jTEstoque.getModel();
-                tblModel.addRow(tbData);
-            }
-            
-            con.close();
-
-        } catch (Exception e) {
-            System.out.println("Erro na conexão: " + e);
-        }
-        
-        */
-        
-
     }
  
 }

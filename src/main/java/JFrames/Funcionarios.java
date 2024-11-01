@@ -6,9 +6,14 @@ package JFrames;
 
 import connection.FuncionariosControl;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -54,6 +59,8 @@ public class Funcionarios extends javax.swing.JFrame {
         jTFSenha = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jTFUsuario = new javax.swing.JTextField();
+        JLblButtonAlterar = new javax.swing.JLabel();
+        JLblButtonVisualizar = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTFuncionarios = new javax.swing.JTable();
 
@@ -72,6 +79,7 @@ public class Funcionarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Funcionários");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -189,7 +197,7 @@ public class Funcionarios extends javax.swing.JFrame {
         jLblButtonAdicionar.setText("Adicionar ");
         jLblButtonAdicionar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
         jLblButtonAdicionar.setOpaque(true);
-        jLblButtonAdicionar.setPreferredSize(new java.awt.Dimension(250, 30));
+        jLblButtonAdicionar.setPreferredSize(new java.awt.Dimension(200, 30));
         jLblButtonAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLblButtonAdicionarMouseClicked(evt);
@@ -209,7 +217,7 @@ public class Funcionarios extends javax.swing.JFrame {
         JLblButtonRemover.setText("Remover ");
         JLblButtonRemover.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
         JLblButtonRemover.setOpaque(true);
-        JLblButtonRemover.setPreferredSize(new java.awt.Dimension(250, 30));
+        JLblButtonRemover.setPreferredSize(new java.awt.Dimension(200, 30));
         JLblButtonRemover.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JLblButtonRemoverMouseClicked(evt);
@@ -257,6 +265,46 @@ public class Funcionarios extends javax.swing.JFrame {
         jTFUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTFUsuario.setPreferredSize(new java.awt.Dimension(150, 30));
 
+        JLblButtonAlterar.setBackground(new java.awt.Color(31, 43, 68));
+        JLblButtonAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        JLblButtonAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        JLblButtonAlterar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        JLblButtonAlterar.setText("Alterar");
+        JLblButtonAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
+        JLblButtonAlterar.setOpaque(true);
+        JLblButtonAlterar.setPreferredSize(new java.awt.Dimension(200, 30));
+        JLblButtonAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLblButtonAlterarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JLblButtonAlterarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JLblButtonAlterarMouseExited(evt);
+            }
+        });
+
+        JLblButtonVisualizar.setBackground(new java.awt.Color(31, 43, 68));
+        JLblButtonVisualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        JLblButtonVisualizar.setForeground(new java.awt.Color(255, 255, 255));
+        JLblButtonVisualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        JLblButtonVisualizar.setText("Visualizar");
+        JLblButtonVisualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 196), 2));
+        JLblButtonVisualizar.setOpaque(true);
+        JLblButtonVisualizar.setPreferredSize(new java.awt.Dimension(200, 30));
+        JLblButtonVisualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLblButtonVisualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JLblButtonVisualizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JLblButtonVisualizarMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -265,36 +313,44 @@ public class Funcionarios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jTFNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jTFNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jTFCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(44, 44, 44))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(136, 136, 136)))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLblButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jTFCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(136, 136, 136)))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jLblButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130)
-                .addComponent(JLblButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(JLblButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(JLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(JLblButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,6 +372,8 @@ public class Funcionarios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLblButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JLblButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JLblButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JLblButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
@@ -326,26 +384,7 @@ public class Funcionarios extends javax.swing.JFrame {
         jTFuncionarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "", null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "CPF", "Usuário", "Senha", "Cargo"
@@ -524,7 +563,7 @@ public class Funcionarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Adicione todas informações sobre um novo funcionario", "Erro",
                     JOptionPane.WARNING_MESSAGE);
         }
-        
+
 
     }//GEN-LAST:event_jLblButtonAdicionarMouseClicked
 
@@ -540,30 +579,97 @@ public class Funcionarios extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este nome, por favor verifique!", "Erro",
                         JOptionPane.WARNING_MESSAGE);
             }
-        }else if(nome == null && usuario == null){
+        } else if (nome == null && usuario == null) {
             if (funcionarios.removerFornecedorPorCargo(cargo) == true) {
                 return;
             } else {
                 JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este cargo, por favor verifique!", "Erro",
                         JOptionPane.WARNING_MESSAGE);
             }
-        }else if(nome == null && cargo == null){
-             if (funcionarios.removerFornecedorPorUsuario(usuario) == true) {
+        } else if (nome == null && cargo == null) {
+            if (funcionarios.removerFornecedorPorUsuario(usuario) == true) {
                 return;
             } else {
                 JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este usuario, por favor verifique!", "Erro",
                         JOptionPane.WARNING_MESSAGE);
             }
-        }else{
-            if (funcionarios.removerFornecedorGeral(usuario, nome , cargo) == true) {
+        } else {
+            if (funcionarios.removerFornecedorGeral(usuario, nome, cargo) == true) {
                 return;
             } else {
                 JOptionPane.showMessageDialog(null, "Não foi possivel encontrar um funcionario com este usuario, por favor verifique!", "Erro",
                         JOptionPane.WARNING_MESSAGE);
             }
         }
-        
+
     }//GEN-LAST:event_JLblButtonRemoverMouseClicked
+
+    private void JLblButtonAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonAlterarMouseClicked
+        // TODO add your handling code here:
+        JDialogFuncionarios dialog = new JDialogFuncionarios(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_JLblButtonAlterarMouseClicked
+
+    private void JLblButtonAlterarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonAlterarMouseEntered
+        // TODO add your handling code here:
+        JLblButtonAlterar.setBackground(new Color(38, 133, 196));
+        Border border = BorderFactory.createLineBorder(new Color(31, 43, 68), 2);
+        JLblButtonAlterar.setBorder(border);
+    }//GEN-LAST:event_JLblButtonAlterarMouseEntered
+
+    private void JLblButtonAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonAlterarMouseExited
+        // TODO add your handling code here:
+        JLblButtonAlterar.setBackground(new Color(31, 43, 68));
+        Border border = BorderFactory.createLineBorder(new Color(38, 133, 196), 2);
+        JLblButtonAlterar.setBorder(border);
+    }//GEN-LAST:event_JLblButtonAlterarMouseExited
+
+    private void JLblButtonVisualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonVisualizarMouseClicked
+        // TODO add your handling code here:
+         try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/supramercado", "postgres", "SENHABANCO");
+
+            String sql = "SELECT * FROM funcionarios";
+            PreparedStatement pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            DefaultTableModel tblModel = (DefaultTableModel) jTFuncionarios.getModel();
+            tblModel.setRowCount(0);
+
+            while (rs.next()) {
+                String id = String.valueOf(rs.getInt("id"));
+                String nome = rs.getString("nome");
+                String cpf = rs.getString("cpf");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
+                String cargo = rs.getString("cargo");
+                
+
+                String tbData[] = {id,nome, cpf, usuario, senha, cargo};
+                
+                tblModel.addRow(tbData);
+            }
+            
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("Erro na conexão: " + e);
+        }
+    }//GEN-LAST:event_JLblButtonVisualizarMouseClicked
+
+    private void JLblButtonVisualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonVisualizarMouseEntered
+        // TODO add your handling code here:
+        JLblButtonVisualizar.setBackground(new Color(38, 133, 196));
+        Border border = BorderFactory.createLineBorder(new Color(31, 43, 68), 2);
+        JLblButtonVisualizar.setBorder(border);
+    }//GEN-LAST:event_JLblButtonVisualizarMouseEntered
+
+    private void JLblButtonVisualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLblButtonVisualizarMouseExited
+        // TODO add your handling code here:
+        JLblButtonVisualizar.setBackground(new Color(31, 43, 68));
+        Border border = BorderFactory.createLineBorder(new Color(38, 133, 196), 2);
+        JLblButtonVisualizar.setBorder(border);
+    }//GEN-LAST:event_JLblButtonVisualizarMouseExited
 
     /**
      * @param args the command line arguments
@@ -601,7 +707,9 @@ public class Funcionarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLblButtonAlterar;
     private javax.swing.JLabel JLblButtonRemover;
+    private javax.swing.JLabel JLblButtonVisualizar;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
